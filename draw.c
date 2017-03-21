@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "ml6.h"
 #include "display.h"
@@ -19,7 +20,7 @@
 void add_circle( struct matrix * points, 
 		 double cx, double cy, double cz,
 		 double r, double step ) {
-  int t,x0,x1,y0,y1;
+  double t,x0,x1,y0,y1;
   for( t = 0; t < 1.01; t+=step){
     x0 = r * cos(t) + cx;
     x1 = r * cos(t+step) + cx;
@@ -56,7 +57,19 @@ void add_curve( struct matrix *points,
   struct matrix *x,*y;
   x = generate_curve_coefs(x0,x1,x2,x3,type);
   y = generate_curve_coefs(y0,y1,y2,y3,type);
-  
+  double ax,ay,bx,by,cx,cy,dx,dy,t;
+  ax = x->m[0][0];
+  bx = x->m[1][0];
+  cx = x->m[2][0];
+  dx = x->m[3][0];
+
+  ay = y->m[0][0];
+  by = y->m[1][0];
+  cy = y->m[2][0];
+  dy = y->m[3][0];
+
+  for( t = 0; t < 1.01 ; t++){
+    
   
 }
 
