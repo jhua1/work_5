@@ -20,7 +20,7 @@ void add_circle( struct matrix * points,
 		 double cx, double cy, double cz,
 		 double r, double step ) {
   int t,x0,x1,y0,y1;
-  for( t = 0; t < 1; t+=step){
+  for( t = 0; t < 1.01; t+=step){
     x0 = r * cos(t) + cx;
     x1 = r * cos(t+step) + cx;
     y0 = r * sin(t) + cy;
@@ -53,6 +53,11 @@ void add_curve( struct matrix *points,
 		double x2, double y2, 
 		double x3, double y3, 
 		double step, int type ) {
+  struct matrix *x,*y;
+  x = generate_curve_coefs(x0,x1,x2,x3,type);
+  y = generate_curve_coefs(y0,y1,y2,y3,type);
+  
+  
 }
 
 
