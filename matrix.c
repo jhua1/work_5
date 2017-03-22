@@ -88,19 +88,14 @@ struct matrix * generate_curve_coefs( double p1, double p2,
   tmp->m[1][0] = p2;
   tmp->m[2][0] = p3;
   tmp->m[3][0] = p4;
-  
-  if(type == HERMITE){
-    struct matrix *herm;
-    herm = make_hermite();
-    matrix_mult(herm,tmp);
-    free(herm);
-  }
-  else if(type == BEZIER){
-    struct matrix *bez;
-    bez = make_bezier();
-    matrix_mult(bez,tmp);
-    free(bez);
-  }
+  tmp->lastcol++;
+
+  struct matrix *curve;
+  if(type == HERMITE)
+    curve = make_hermite();
+  else if(type == BEZIER)   
+    curve = make_bezier();
+  matrix_mult(curve,tmp);  
   return tmp;
 }
 
